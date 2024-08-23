@@ -13,7 +13,7 @@ let computerScore = 0;
 
 
 function getComputerChoice(max,min){
-    let randomNum = Math.round(Math.random()*(max-min)+min);
+    let randomNum = Math.floor(Math.random()*(max-min)+min);
     let choice = " "
     if (randomNum == 1){
         choice = "rock";
@@ -59,9 +59,22 @@ function playRound(humanChoice, computerChoice){
 
 }
 
-playRound(getHumanChoice(), getComputerChoice(3,1) );
-console.log("Your Score = ", humanScore);
-console.log("AI Score = ", computerScore);
+
+for (let i = 0;i<5;i++){
+    playRound(getHumanChoice(), getComputerChoice(3,1));
+    console.log("Your Score = ", humanScore);
+    console.log("AI Score = ", computerScore);
+
+
+}
+
+if(humanScore > computerScore){
+    console.log("You Win!!!")
+}else if(humanScore === computerScore){
+    console.log("Its a Draw.")
+}else{
+    console.log("You Lost! Play Again.")
+}
 
 
 
