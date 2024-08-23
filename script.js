@@ -8,6 +8,9 @@
     //gnerates a random number between 0 and 1 multiply that by 10 to get a number between 1 and 10
     //if the number is 0 then rock,if its less than 5 or equal to 5 then paper ,anyother number i.e above 5 then scissor
 
+let humanScore = 0;
+let computerScore = 0;
+
 
 function getComputerChoice(max,min){
     let randomNum = Math.round(Math.random()*(max-min)+min);
@@ -29,6 +32,37 @@ function getHumanChoice(){
     return choice.toLowerCase();
 }
 
+function playRound(humanChoice, computerChoice){
+    if (humanChoice == "rock" && computerChoice == "scissor"){
+        console.log("You Win! Rock beats Scissor");
+        humanScore++;
+    }else if (humanChoice == "scissor" && computerChoice == "rock"){
+        console.log("You Lose! Rock beats Scissor");
+        computerScore++;
+    }else if (humanChoice == "paper" && computerChoice == "rock"){
+        console.log("You Win! Paper beats Rock");
+        humanScore++;
+    }else if (humanChoice == "rock" && computerChoice == "paper"){
+        console.log("You Lose! Paper beats Rock");
+        computerScore++;
+    }else if (humanChoice == "paper" && computerChoice == "scissor"){
+        console.log("You Lose! Scissor beats Paper");
+        computerScore++;
+    }else if (humanChoice == "scissor" && computerChoice == "paper"){
+        console.log("You Win! Scissor beats Paper");
+        humanScore++;
+    }else if(humanChoice==computerChoice){
+        console.log("Psyche!Its a Draw.");
+    }else{
+        console.log("Incorrect Choice! Please Retry.");
+    }
 
-console.log(getHumanChoice());
-console.log(getComputerChoice(3,1));
+}
+
+playRound(getHumanChoice(), getComputerChoice(3,1) );
+console.log("Your Score = ", humanScore);
+console.log("AI Score = ", computerScore);
+
+
+
+         
